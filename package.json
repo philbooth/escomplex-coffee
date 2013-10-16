@@ -37,7 +37,7 @@
         "esprima": "1.0.x"
     },
     "scripts": {
-        "test": "./node_modules/mocha/bin/mocha --ui tdd --reporter spec --compilers coffee:coffee-script-redux/register --colors test/index.coffee"
+        "test": "./node_modules/mocha/bin/mocha --ui tdd --reporter spec --compilers coffee:coffee-script-redux/register --colors test"
     }
 }
 
