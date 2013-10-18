@@ -24,10 +24,6 @@ suite 'escomplex-coffee:', ->
     test 'analyse function is exported', ->
       assert.isFunction escomplex.analyse
 
-    test 'analyse throws when source is object', ->
-      assert.throws ->
-        escomplex.analyse {}
-
     test 'analyse throws when source is invalid CoffeeScript string', ->
       assert.throws ->
         escomplex.analyse 'foo ='
@@ -90,15 +86,14 @@ suite 'escomplex-coffee:', ->
       teardown ->
         result = undefined
 
-      test 'analyse returns array when source is array', ->
-        assert.isArray result
-        assert.lengthOf result, 1
+      test 'analyse returns object when source is array', ->
+        assert.isObject result
 
       test 'analyse returns reports when source is array', ->
-        assert.isArray result[0].reports
-        assert.lengthOf result[0].reports, 1
+        assert.isArray result.reports
+        assert.lengthOf result.reports, 1
 
       test 'analyse returns matrices when source is array', ->
-        assert.isArray result[0].matrices
-        assert.lengthOf result[0].matrices, 1
+        assert.isArray result.matrices
+        assert.lengthOf result.matrices, 1
 
