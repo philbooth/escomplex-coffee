@@ -97,3 +97,24 @@ suite 'escomplex-coffee:', ->
         assert.isArray result.matrices
         assert.lengthOf result.matrices, 1
 
+    suite 'analyse conditions:', ->
+      result = undefined
+
+      setup ->
+        result = escomplex.analyse """
+                                   foo = Math.random()
+                                   bar = Math.random()
+
+                                   if foo isnt bar
+                                     console.log 'foo isnt bar'
+
+                                   unless foo is bar
+                                     console.log 'foo still isnt bar'
+                                   """
+
+      teardown ->
+        result = undefined
+
+      test 'maintainability index is correct', ->
+        assert.notEqual result.maintainability, 171
+
