@@ -45,8 +45,8 @@ syntax = {
         node.variable.properties.length == 1 and
         util.getName(node.variable.base) == "Literal" and
         node.variable.base.value == "require" and
-        getName(node.variable.properties[0]) == "Access" and
-        getName(node.variable.properties[0].name) == "Literal" and
+        util.getName(node.variable.properties[0]) == "Access" and
+        util.getName(node.variable.properties[0].name) == "Literal" and
         node.variable.properties[0].name.value == "config"
           call.processAmdRequireConfig(node.args)
 

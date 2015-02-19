@@ -1,5 +1,7 @@
 {getName} = require "./util"
 
+stripString = (str) -> str.replace(/['"]+/g, '')
+
 amdPathAliases = {}
 
 createDependency = (node, path, type) ->
@@ -12,11 +14,12 @@ createDependency = (node, path, type) ->
 resolveRequireDependency = (dependency, resolver) ->
   if getName(dependency) == 'Value' and getName(dependency.base) == 'Literal'
     return resolver(dependency.base.value) if typeof resolver == 'function'
-    return dependency.base.value
+    return stripString(dependency.base.value)
 
   return '* dynamic dependency *'
 
 resolveAmdRequireDependency = (dependency) ->
+  dependency = stripString(dependency)
   amdPathAliases[dependency] or dependency
 
 processAmdRequireItem = (node, item) ->
@@ -41,7 +44,7 @@ setAmdPathAlias = (alias) ->
   getName(alias.variable.base)  == 'Literal' and
   getName(alias.value) == 'Value' and
   getName(alias.value.base) == 'Literal'
-    amdPathAliases[alias.variable.base.value] = alias.value.base.value
+    amdPathAliases[stripString(alias.variable.base.value)] = stripString(alias.value.base.value)
 
   return
 
