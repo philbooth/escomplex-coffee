@@ -35,22 +35,22 @@ suite 'escomplex-coffee:', ->
     test 'analyse does not throw when source is valid array', ->
       assert.doesNotThrow ->
         escomplex.analyse [
-          { source: '"foo"', path: 'foo' }
-          { source: '"bar"', path: 'bar' }
+          { code: '"foo"', path: 'foo' }
+          { code: '"bar"', path: 'bar' }
         ]
 
     test 'analyse throws when source array contains invalid CoffeeScript', ->
       assert.throws ->
         escomplex.analyse [
-          { source: 'foo =', path: 'foo' }
-          { source: '"bar"', path: 'bar' }
+          { code: 'foo =', path: 'foo' }
+          { code: '"bar"', path: 'bar' }
         ]
 
     test 'analyse throws when source array is missing path', ->
       assert.throws ->
         escomplex.analyse [
-          { source: '"foo"', path: 'foo' }
-          { source: '"bar"' }
+          { code: '"foo"', path: 'foo' }
+          { code: '"bar"' }
         ]
 
     suite 'analyse string:', ->
@@ -81,7 +81,7 @@ suite 'escomplex-coffee:', ->
       result = undefined
 
       setup ->
-        result = escomplex.analyse [ { source: '"foo"', path: 'foo' } ]
+        result = escomplex.analyse [ { code: '"foo"', path: 'foo' } ]
 
       teardown ->
         result = undefined

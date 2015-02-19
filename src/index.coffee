@@ -16,7 +16,7 @@ walker = require './walker'
 analyse = (source, options) ->
   if Array.isArray source
     return escomplex.analyse source.map((s) ->
-      { ast: coffee.nodes(s.source), path: s.path }
+      { ast: coffee.nodes(s.code), path: s.path }
     ), walker, options
 
   escomplex.analyse coffee.nodes(source), walker, options
