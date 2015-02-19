@@ -3,8 +3,9 @@
 
 'use strict'
 
-coffee = require 'coffee-script-redux'
+coffee = require 'coffee-script'
 escomplex = require 'escomplex'
+walker = require './walker'
 
 # Public function `analyse`.
 #
@@ -15,10 +16,30 @@ escomplex = require 'escomplex'
 analyse = (source, options) ->
   if Array.isArray source
     return escomplex.analyse source.map((s) ->
-      { ast: coffee.parse(s.source), path: s.path }
-    ), options
+      { ast: coffee.nodes(s.source), path: s.path }
+    ), walker, options
 
-  escomplex.analyse coffee.parse(source), options
+  escomplex.analyse coffee.nodes(source), walker, options
 
 exports.analyse = analyse
 
+if module == require.main
+  s = '''
+  stuff = require './thing'
+  res = stuff.run() if stuff.name == "hello"
+  a = [1, 2, 3, 4]
+  o = {
+    foo: 'bar'
+    oh: 'no'
+
+  }
+
+  doit = ->
+    console.log('done')
+
+  res.process 1234, (err, res) ->
+    throw err if err
+    console.log(res.code)
+
+  '''
+  console.log(JSON.stringify(analyse(s), 0, 2))
