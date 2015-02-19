@@ -62,10 +62,10 @@ processAmdRequireConfig = (args) ->
 
 processRequire = (node) ->
   if node.args.length == 1
-    processCommonJSRequire(node)
+    return processCommonJSRequire(node)
 
   if node.args.length == 2
-    processAmdRequire(node)
+    return processAmdRequire(node)
 
 module.exports = {
   amdPathAliases: amdPathAliases,

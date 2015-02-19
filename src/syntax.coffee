@@ -39,7 +39,7 @@ syntax = {
         node.variable.properties.length == 0 and
         util.getName(node.variable.base) == "Literal" and
         node.variable.base.value == "require"
-          call.processRequire(node)
+          return call.processRequire(node)
 
         if util.getName(node.variable) == "Value" and
         node.variable.properties.length == 1 and
