@@ -6,7 +6,7 @@
   "bugs": "https://github.com/philbooth/escomplex-coffee/issues",
   "license": "MIT",
   "author": "Phil Booth <pmbooth@gmail.com> (https://github.com/philbooth)",
-  "main": "./src",
+  "main": "./lib",
   "repository": {
     "type": "git",
     "url": "https://github.com/philbooth/escomplex-coffee.git"
@@ -38,6 +38,7 @@
     "esprima": "1.0.x"
   },
   "scripts": {
+    "prepublish" : "make build",
     "test": "./node_modules/mocha/bin/mocha --ui tdd --reporter spec --compilers coffee:coffee-script-redux/register --colors test"
   }
 }
