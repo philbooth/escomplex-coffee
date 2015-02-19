@@ -19,10 +19,7 @@ syntax = {
   },
   Literal: {
     trait: ->
-      getOp = (node) ->
-        if typeof node.value == "string"
-          return "\"#{node.value}\""
-        return node.value
+      getOp = (node) -> return node.value
 
       trait.actualise(0, 0, undefined, getOp, getChildren)
   },
