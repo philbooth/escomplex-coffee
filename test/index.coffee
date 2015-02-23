@@ -94,8 +94,10 @@ suite 'escomplex-coffee:', ->
         assert.lengthOf result.reports, 1
 
       test 'analyse returns matrices when source is array', ->
-        assert.isArray result.matrices
-        assert.lengthOf result.matrices, 1
+        assert.isArray result.adjacencyMatrix
+        assert.lengthOf result.adjacencyMatrix, 1
+        assert.isArray result.visibilityMatrix
+        assert.lengthOf result.visibilityMatrix, 1
 
     suite 'analyse conditions:', ->
       result = undefined
