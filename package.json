@@ -29,7 +29,7 @@
   ],
   "dependencies": {
     "coffee-script": "^1.9.1",
-    "escomplex": "1.1.x",
+    "escomplex": "1.0.x",
     "escomplex-traits": "^0.2.0"
   },
   "devDependencies": {
