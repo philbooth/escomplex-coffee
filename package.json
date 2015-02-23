@@ -1,6 +1,6 @@
 {
   "name": "escomplex-coffee",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Software complexity analysis for CoffeeScript projects. CoffeeScript-specific wrapper around escomplex.",
   "homepage": "https://github.com/philbooth/escomplex-coffee",
   "bugs": "https://github.com/philbooth/escomplex-coffee/issues",
@@ -29,7 +29,7 @@
   ],
   "dependencies": {
     "coffee-script": "^1.9.1",
-    "escomplex": "0.1.x",
+    "escomplex": "1.1.x",
     "escomplex-traits": "^0.2.0"
   },
   "devDependencies": {
