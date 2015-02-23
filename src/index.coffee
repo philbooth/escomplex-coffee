@@ -3,8 +3,9 @@
 
 'use strict'
 
-coffee = require 'coffee-script-redux'
+coffee = require 'coffee-script'
 escomplex = require 'escomplex'
+walker = require './walker'
 
 # Public function `analyse`.
 #
@@ -15,10 +16,22 @@ escomplex = require 'escomplex'
 analyse = (source, options) ->
   if Array.isArray source
     return escomplex.analyse source.map((s) ->
-      { ast: coffee.parse(s.source), path: s.path }
-    ), options
+      { ast: getAst(s.code), path: s.path }
+    ), walker, options
 
-  escomplex.analyse coffee.parse(source), options
+  escomplex.analyse getAst(source), walker, options
 
 exports.analyse = analyse
 
+getAst = (source) ->
+  ast = coffee.nodes(source)
+  lastExp = ast.expressions[ast.expressions.length - 1]
+  ast.loc = {
+    start: {
+      line: ast.locationData.first_line
+    },
+    end: {
+      line: lastExp.locationData.last_line
+    }
+  }
+  ast

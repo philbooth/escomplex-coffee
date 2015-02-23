@@ -1,43 +1,44 @@
 {
-    "name": "escomplex-coffee",
-    "version": "0.1.0",
-    "description": "Software complexity analysis for CoffeeScript projects. CoffeeScript-specific wrapper around escomplex.",
-    "homepage": "https://github.com/philbooth/escomplex-coffee",
-    "bugs": "https://github.com/philbooth/escomplex-coffee/issues",
-    "license": "MIT",
-    "author": "Phil Booth <pmbooth@gmail.com> (https://github.com/philbooth)",
-    "main": "./src",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/philbooth/escomplex-coffee.git"
-    },
-    "keywords": [
-        "escomplex",
-        "coffeescript",
-        "coffee-script",
-        "coffeescriptredux",
-        "coffee-script-redux",
-        "complexity",
-        "simplicity",
-        "cyclomatic",
-        "halstead",
-        "maintainability",
-        "dependencies",
-        "static",
-        "analysis",
-        "metrics"
-    ],
-    "dependencies": {
-        "coffee-script-redux": "2.0.x",
-        "escomplex": "0.1.x"
-    },
-    "devDependencies": {
-        "mocha": "1.13.x",
-        "chai": "1.8.x",
-        "esprima": "1.0.x"
-    },
-    "scripts": {
-        "test": "./node_modules/mocha/bin/mocha --ui tdd --reporter spec --compilers coffee:coffee-script-redux/register --colors test"
-    }
+  "name": "escomplex-coffee",
+  "version": "0.2.0",
+  "description": "Software complexity analysis for CoffeeScript projects. CoffeeScript-specific wrapper around escomplex.",
+  "homepage": "https://github.com/philbooth/escomplex-coffee",
+  "bugs": "https://github.com/philbooth/escomplex-coffee/issues",
+  "license": "MIT",
+  "author": "Phil Booth <pmbooth@gmail.com> (https://github.com/philbooth)",
+  "main": "./lib",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/philbooth/escomplex-coffee.git"
+  },
+  "keywords": [
+    "escomplex",
+    "coffeescript",
+    "coffee-script",
+    "coffeescriptredux",
+    "coffee-script-redux",
+    "complexity",
+    "simplicity",
+    "cyclomatic",
+    "halstead",
+    "maintainability",
+    "dependencies",
+    "static",
+    "analysis",
+    "metrics"
+  ],
+  "dependencies": {
+    "coffee-script": "^1.9.1",
+    "escomplex": "1.0.x",
+    "escomplex-traits": "^0.2.0"
+  },
+  "devDependencies": {
+    "mocha": "1.13.x",
+    "chai": "1.8.x",
+    "esprima": "1.0.x"
+  },
+  "scripts": {
+    "prepublish" : "make build",
+    "test": "./node_modules/mocha/bin/mocha --ui tdd --reporter spec --compilers coffee:coffee-script/register --colors test"
+  }
 }
-
