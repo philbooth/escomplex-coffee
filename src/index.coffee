@@ -35,31 +35,3 @@ getAst = (source) ->
     }
   }
   ast
-
-if module == require.main
-  s = '''
-  require.config({
-    paths: {
-      one: "code/one",
-      two: "code/two"
-    }
-  })
-  require ['one', 'code/three'], (one, three) ->
-    stuff = require './thing'
-    res = stuff.run() if stuff.name == "hello"
-    a = [1, 2, 3, 4]
-    o = {
-      foo: 'bar'
-      oh: 'no'
-
-    }
-
-    doit = ->
-      console.log('done')
-
-    res.process 1234, (err, res) ->
-      throw err if err
-      console.log(res.code)
-
-  '''
-  console.log(JSON.stringify(analyse(s), 0, 2))

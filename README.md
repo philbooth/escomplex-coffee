@@ -1,7 +1,5 @@
 # escomplex-coffee
 
-THIS PROJECT IS BRAND NEW AND NOT SAFE TO USE YET! :)
-
 [![Build status][ci-image]][ci-status]
 
 Software complexity analysis for CoffeeScript projects.
