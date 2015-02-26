@@ -14,6 +14,7 @@ walker = require './walker'
 # @param source {object|array}  The source code to analyse for complexity.
 # @param [options] {object}     Options to modify the complexity calculation.
 analyse = (source, options) ->
+  options ||= {}
   if Array.isArray source
     return escomplex.analyse source.map((s) ->
       { ast: getAst(s.code, options.ignoreErrors), path: s.path }
