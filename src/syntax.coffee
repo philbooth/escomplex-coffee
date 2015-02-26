@@ -32,13 +32,15 @@ syntax = {
       handleDeps = (node, clearAliases) ->
         call.amdPathAliases = {} if clearAliases
 
-        if util.getName(node.variable) == "Value" and
+        if node.variable and
+        util.getName(node.variable) == "Value" and
         node.variable.properties.length == 0 and
         util.getName(node.variable.base) == "Literal" and
         node.variable.base.value == "require"
           return call.processRequire(node)
 
-        if util.getName(node.variable) == "Value" and
+        if node.variable and
+        util.getName(node.variable) == "Value" and
         node.variable.properties.length == 1 and
         util.getName(node.variable.base) == "Literal" and
         node.variable.base.value == "require" and

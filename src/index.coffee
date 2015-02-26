@@ -16,15 +16,25 @@ walker = require './walker'
 analyse = (source, options) ->
   if Array.isArray source
     return escomplex.analyse source.map((s) ->
-      { ast: getAst(s.code), path: s.path }
+      { ast: getAst(s.code, options.ignoreErrors), path: s.path }
+    ).filter((s) ->
+      !!s.ast
     ), walker, options
 
-  escomplex.analyse getAst(source), walker, options
+  escomplex.analyse getAst(source, options.ignoreErrors), walker, options
 
 exports.analyse = analyse
 
-getAst = (source) ->
-  ast = coffee.nodes(source)
+getAst = (source, ignoreErrors) ->
+  return if source.length == 0
+  ast = null
+  try
+    ast = coffee.nodes(source)
+  catch e
+    return if ignoreErrors
+    throw e
+
+
   lastExp = ast.expressions[ast.expressions.length - 1]
   ast.loc = {
     start: {
